@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1= title
+  table
+    thead
+      tr
+        td(class='bold')= 'Автор'
+        td(class='bold')= 'Возраст'
+        td(class='bold')= 'Название'
+        td(class='bold')= 'Год'
+    tbody
+      -for (let i = 0; i < data.length; i++)
+        -for (let j = 0; j < data[i].books.length; j++)
+          tr
+            if (j === 0)
+              td(class='bold')= data[i].name || 'Unknown'
+              td(class='bold')= data[i].old || '-'
+            else
+              td= ''
+              td= ''
+            td= data[i].books[j].title || '-'
+            td= data[i].books[j].year || '-'
+        if (i < data.length - 1)
+          tr(class='separator')
+            td(colspan=4)
